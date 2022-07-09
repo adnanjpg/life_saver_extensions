@@ -3,11 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:life_saver_extensions/life_saver_extensions.dart';
 
 void main() {
-  /// the tests are based on the values, don't touch!
-  const fullInts = [1, 2, 3];
-
   group(
-    'AdamFlutterIterable extension on Iterable',
+    'LifeSaverIterable',
     () {
       test(
         'joinList',
@@ -37,87 +34,27 @@ void main() {
     },
   );
   group(
-    'AdamFlutterList extension on List',
-    () {
-      final int? r = fullInts.getElement(2), l = fullInts.getElement(5);
-      test(
-        'getElement()',
-        () {
-          expect(r, 3);
-          expect(l, null);
-          expect(fullInts.getElement(0) == null, false);
-        },
-      );
-      test(
-        'mapProperly()',
-        () {
-          expect(
-            fullInts.map((e) => e).getElement(0).runtimeType == int,
-            true,
-          );
-          expect(
-            fullInts.map((e) => e + 1).getElement(0) ==
-                fullInts.getElement(0)! + 1,
-            true,
-          );
-          expect(
-            fullInts
-                    .where((e) => e > 1)
-                    .map(
-                      (e) => e + 1,
-                    )
-                    .getElement(0) ==
-                fullInts.getElement(1)! + 1,
-            true,
-          );
-        },
-      );
-    },
-  );
-  group(
-    'AdamFlutterMap extension on Map',
+    'LifeSaverMap',
     () {
       final Map<String, String> adnan = {
         'adnan': 'not adnan',
         'item1': 'val1',
         'item4': 'val4',
       };
-      String? d;
       test(
-        'setElement()',
+        'getAnyOfKeys',
         () {
-          const String k = 'a';
-          adnan.setElement(k, d);
-          expect(
-            adnan[k] == null,
-            true,
-          );
-        },
-      );
-      test(
-        'getElement()',
-        () {
-          expect(
-            adnan[adnan.keys.toList().getElement(0)!] != null,
-            true,
-          );
-          expect(adnan['adn'] == null, true);
-        },
-      );
-      test(
-        'getAnyIfContains()',
-        () {
-          expect(adnan.getAnyIfContains(['adnan']) != null, true);
-          expect(adnan.getAnyIfContains(['adn']) == null, true);
+          expect(adnan.getAnyOfKeys(['adnan']), 'not adnan');
+          expect(adnan.getAnyOfKeys(['adn']), null);
         },
       );
     },
   );
   group(
-    'AdamFlutterString extension on String',
+    'LifeSaverString',
     () {
       test(
-        'cutAfter method',
+        'cutAfter',
         () {
           const String _r = 'adnan and 2 other people',
               _t = 'adnan',
@@ -134,12 +71,24 @@ void main() {
       );
 
       test(
-        'removeAt method',
+        'removeAt',
         () {
           const input = 'abcde';
           expect(input.removeAt(0), 'bcde');
           expect(input.removeAt(1), 'acde');
           expect(input.removeAt(4), 'abcd');
+        },
+      );
+      test(
+        'removeBetween',
+        () {
+          const input = 'abcde';
+          expect(input.removeBetween(0, 4), 'e');
+          expect(input.removeBetween(1, 5), 'a');
+          expect(input.removeBetween(2, 3), 'abde');
+          expect(() {
+            input.removeBetween(0, 0);
+          }, throwsA(isA<AssertionError>()));
         },
       );
     },
