@@ -1,39 +1,24 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Life saver extensions 
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+this packaage contains some very useful extensions used every day, and some are used occasionally.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+my really life saver favorite one is `joinWidgetList`.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
 
-## Features
+## how to integrate into your project
+this is not a good enough thing to be published on [pub.dev](https://www.pub.dev), so I'll keep it on github.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+you can add it to your `pubspec.yaml` in 2 ways:
+<details>
+    <summary>if you're using ssh</summary>
 
-## Getting started
+    life_saver_extensions:
+        git: git@github.com:adnanjpg/life_saver_extensions.git
+</details>
+<details>
+    <summary>if you're not using ssh</summary>
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+    life_saver_extensions:
+        git: https://github.com/adnanjpg/life_saver_extensions.git
+</details>
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
