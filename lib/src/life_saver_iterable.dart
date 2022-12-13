@@ -72,3 +72,23 @@ extension LifeSaverIterable<E> on Iterable<E> {
     return output;
   }
 }
+
+extension LifeSaverWidgetIterable on Iterable<Widget> {
+  /// this method will take 2 `bun`s and wrap this iterable (the `filling`s) in between them.
+  /// (you may specify only the first one if both are the same) and will
+  /// return a list of widgets with the `bun`s and `filling` in between.
+  List<Widget> sandwich({
+    required Widget bun,
+    Widget? secondBun,
+  }) {
+    final List<Widget> output = [];
+
+    output.add(bun);
+
+    output.addAll(this);
+
+    output.add(secondBun ?? bun);
+
+    return output;
+  }
+}
