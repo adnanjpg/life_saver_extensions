@@ -71,6 +71,20 @@ extension LifeSaverIterable<E> on Iterable<E> {
 
     return output;
   }
+
+  /// map is good, but a lot of times you need to know the index of the element.
+  /// this method will pass you the index of the element as well
+  /// as the element itself.
+  Iterable<T> mapWIndex<T>(T Function(int index, E e) toElement) {
+    final List<T> output = [];
+
+    for (var i = 0; i < length; i++) {
+      final element = elementAt(i);
+      output.add(toElement(i, element));
+    }
+
+    return output;
+  }
 }
 
 extension LifeSaverWidgetIterable on Iterable<Widget> {

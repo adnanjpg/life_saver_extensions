@@ -31,6 +31,19 @@ void main() {
           expect(joined, expected);
         },
       );
+
+      test(
+        'mapWIndex',
+        () {
+          const elements = ['a', 'b', 'c', 'd', 'e'];
+
+          final mapped = elements.mapWIndex(
+            (index, element) => '$index$element',
+          );
+
+          expect(mapped, ['0a', '1b', '2c', '3d', '4e']);
+        },
+      );
     },
   );
   group(
